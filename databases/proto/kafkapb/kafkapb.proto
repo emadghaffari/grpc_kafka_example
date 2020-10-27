@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package kafkapb;
+option go_package = "databases/protos/kafkapb";
+
+
+message KafkaRequest {
+    string Message = 1;
+    string client_id = 2;
+}
+
+message KafkaResponse {
+    string result = 1;
+}
+
+service PingService {
+    rpc Ping (KafkaRequest) returns (KafkaResponse);
+}
