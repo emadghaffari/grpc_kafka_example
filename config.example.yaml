@@ -1,4 +1,4 @@
-rnvironment: Test
+environment: test
 elastic:
     url: ""
     auth:
