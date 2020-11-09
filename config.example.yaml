@@ -1,0 +1,25 @@
+rnvironment: Test
+elastic:
+    url: ""
+    auth:
+        username: ""
+        password: ""
+kafka:
+    brokers:
+        - ""
+        - ""
+        - ""
+    version: ""
+    group: ""
+    topics:
+        - ""
+    assignor: ""
+    oldest: true
+    verbose: false
+    Topic: ""
+
+twitter:
+    consumerKey: ""
+    consumerSecret: ""
+    accessToken: ""
+    accessTokenSecret: ""
