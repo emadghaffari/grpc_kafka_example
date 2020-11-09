@@ -1,8 +1,12 @@
 package bootstrap
 
-import "fmt"
+import (
+	"github.com/emadghaffari/grpc_kafka_example/config"
+)
 
-// bootstrap the project before start application
-func init() {
-	fmt.Println("Hello World")
+// Init bootstrap the project before start application
+func Init() {
+	config.ViperConfig.Set()
+	config.LogrusConfig.Set()
+	config.KafkaConfig.Set()
 }
