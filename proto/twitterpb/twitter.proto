@@ -1,7 +1,9 @@
 syntax = "proto3";
 
 package twitterpb;
-option go_package = "protos/twitterpb";
+option go_package = "/twitterpb";
+
+// import "google/api/annotations.proto";
 
 message Search {
     string id = 1;
@@ -34,15 +36,19 @@ message StoreResponse {
 
 service TwitterService {
     rpc Search (SearchRequest) returns (stream SearchResponse){
-        option (google.api.http) = {
+        /*
+            option (google.api.http) = {
             post: "/twitter/search"
             body: "*"
         };
+        */
     }
     rpc Store (StoreRequest) returns (StoreResponse){
-        option (google.api.http) = {
+        /*
+            option (google.api.http) = {
             post: "/twitter/store"
             body: "*"
         };
+        */
     }
 }

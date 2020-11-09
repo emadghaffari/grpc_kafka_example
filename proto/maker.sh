@@ -1,10 +1,18 @@
 #!/bin/sh
 
-# create access token
-protoc --go_out=. / 
---go-grpc_out=. / 
---go-grpc_opt=paths=source_relative /
---go_opt=paths=source_relative databases/proto/kafkapb/kafkapb.proto 
+# read document for golang
+# https://github.com/grpc/grpc-go
 
+# elasticsearch
+protoc --go_out=plugins=grpc:. elasticsearchpb/elasticsearch.proto
 
-# protoc --proto_path=IMPORT_PATH --cpp_out=DST_DIR --java_out=DST_DIR --python_out=DST_DIR --go_out=DST_DIR --ruby_out=DST_DIR --objc_out=DST_DIR --csharp_out=DST_DIR path/to/file.proto
+# ping
+protoc --go_out=plugins=grpc:. pingpb/ping.proto
+
+# twitter
+protoc --go_out=plugins=grpc:. twitterpb/twitter.proto
+
+# protoc -I . \
+#    --go_out . --go_opt paths=source_relative \
+#    --go-grpc_out . --go-grpc_opt paths=source_relative \
+#    -.proto

@@ -1,12 +1,13 @@
 syntax = "proto3";
 
 package elasticsearchpb;
-option go_package = "protos/elasticsearchpb";
+option go_package = "/elasticsearchpb";
 
+// import "google/api/annotations.proto";
 
 message EsQuery {
     string Key = 1;
-    string Value = 1;
+    string Value = 2;
 }
 
 message SearchRequest {
@@ -26,9 +27,11 @@ message SearchResponse {
 
 service SearchService {
     rpc Search (SearchRequest) returns (SearchResponse){
-        option (google.api.http) = {
-            post: "/elk/search"
-            body: "*"
-        };
-    }
+        /*
+            option (google.api.http) = {
+                post: "/elk/search"
+                body: "*"
+            };
+        */
+    };
 }
