@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package twitterpb;
+option go_package = "protos/twitterpb";
+
+message Search {
+    string id = 1;
+    string Username = 2;
+    repeated string Tags = 3;
+    string Description = 4;
+    string CreatedAt = 5;
+}
+
+message SearchRequest {
+    string Text = 1;
+    repeated string Tags = 2;
+    string client_id = 3;
+}
+
+message SearchResponse {
+    repeated Search results = 1;
+    int32 Status = 6;
+}
+
+message StoreRequest {
+    string Text = 1;
+    repeated string Tags = 2;
+}
+
+message StoreResponse {
+    Search result = 1;
+    int32 Status = 6;
+}
+
+service TwitterService {
+    rpc Search (SearchRequest) returns (stream SearchResponse){
+        option (google.api.http) = {
+            post: "/twitter/search"
+            body: "*"
+        };
+    }
+    rpc Store (StoreRequest) returns (StoreResponse){
+        option (google.api.http) = {
+            post: "/twitter/store"
+            body: "*"
+        };
+    }
+}

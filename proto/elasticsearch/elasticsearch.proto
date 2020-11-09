@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package elasticsearchpb;
+option go_package = "protos/elasticsearchpb";
+
+
+message EsQuery {
+    string Key = 1;
+    string Value = 1;
+}
+
+message SearchRequest {
+    repeated EsQuery Equal = 1;
+    repeated EsQuery NotEqual = 2;
+}
+
+message SearchResponse {
+    string id = 1;
+    string Username = 2;
+    repeated string Tags = 3;
+    string Description = 4;
+    string CreatedAt = 5;
+    int32 Status = 6;
+}
+
+
+service SearchService {
+    rpc Search (SearchRequest) returns (SearchResponse){
+        option (google.api.http) = {
+            post: "/elk/search"
+            body: "*"
+        };
+    }
+}
