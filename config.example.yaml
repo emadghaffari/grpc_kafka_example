@@ -17,6 +17,8 @@ kafka:
     oldest: true
     verbose: false
     Topic: ""
+    username: ""
+    password: ""
 
 twitter:
     consumerKey: ""
